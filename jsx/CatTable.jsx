@@ -1,51 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-
-
-
+import CatRow from './CatRow.jsx';
 
 class CatTable extends React.Component {
-      render () {
 
 
+    getRows(category){
       const allKitties = this.props.kitties;
-      const maleCat = allKitties.filter(cat => {
-        return cat.category === 'male';
+      const items = allKitties.filter(cat => {
+        return cat.category === category;
       })
 
-      const maleCatList = maleCat.map(cat => {
-        return <tr key = {cat.name+cat.age}>
-                  <td>{cat.name}</td>
-                  <td>{cat.age}</td>
-               </tr>
+      const rows = items.map(cat => {
+        return <CatRow key={cat.name} cat={cat}/>;
       })
+      return rows;
+    }
 
+    render () {
 
-
-
-         return <table>
-                 <thead>
-                     <tr>
-                         <th>Name</th>
-                         <th>Age</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <tr>
-                         <th colSpan="2">male</th>
-                     </tr>
-                         {maleCatList}
-                     <tr>
-                         <th colSpan="2">female</th>
-                     </tr>
-                     <tr>
-                         <td>Yude</td>
-                         <td>4</td>
-                     </tr>
-                 </tbody>
-             </table>
-
-      }
-  }
+        const maleRow = this.getRows('male');
+        const femaleRow = this.getRows("female");
+        return <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th colSpan="2">male</th>
+              </tr>
+              {maleRow}
+              <tr>
+                <th colSpan="2">female</th>
+              </tr>
+              {femaleRow}
+            </tbody>
+          </table>
+    }
+}
 export default CatTable;
