@@ -8,6 +8,22 @@ import ReactDOM from 'react-dom';
 class CatTable extends React.Component {
       render () {
 
+
+      const allKitties = this.props.kitties;
+      const maleCat = allKitties.filter(cat => {
+        return cat.category === 'male';
+      })
+
+      const maleCatList = maleCat.map(cat => {
+        return <tr key = {cat.name+cat.age}>
+                  <td>{cat.name}</td>
+                  <td>{cat.age}</td>
+               </tr>
+      })
+
+
+
+
          return <table>
                  <thead>
                      <tr>
@@ -19,14 +35,7 @@ class CatTable extends React.Component {
                      <tr>
                          <th colSpan="2">male</th>
                      </tr>
-                     <tr>
-                         <td>Fidel</td>
-                         <td>4</td>
-                     </tr>
-                     <tr>
-                         <td>Fidel</td>
-                         <td>4</td>
-                     </tr>
+                         {maleCatList}
                      <tr>
                          <th colSpan="2">female</th>
                      </tr>

@@ -8,11 +8,11 @@ import CatTable from './CatTable.jsx'
 
 class App extends React.Component {
       render () {
-console.log(this.props.kitties);
+
          return <section>
 
              <SearchBar/>
-             <CatTable/>
+             <CatTable kitties = {this.props.kitties}/>  
          </section>
       }
   }

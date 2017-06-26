@@ -9,7 +9,7 @@ var kitties = [
  {category: "female", age: "1", likesKids: true, name: "Jude Paw"},
  {category: "female", age: "2", likesKids: false, name: "Lucifurr"},
  {category: "female", age: "3", likesKids: true, name: "Meowly Cyrus"}
-];
+];  
 
 
 document.addEventListener('DOMContentLoaded', () => {
